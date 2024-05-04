@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { Alert, Button, MenuItem, Snackbar, Stack } from "@mui/material";
 import { useForm } from "react-hook-form";
+import Header from "../../components/shared/Header";
 
 const Form = () => {
   const {
@@ -53,6 +54,7 @@ const Form = () => {
 
   return (
     <>
+      <Header title="CREATE USER" subTitle="Create a New User Profile" />
       <Box
         onSubmit={handleSubmit(onSubmit)}
         component="form"

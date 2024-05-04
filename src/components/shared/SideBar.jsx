@@ -9,7 +9,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MuiDrawer from "@mui/material/Drawer";
-import { Avatar, Typography, styled, useTheme } from "@mui/material";
+import { Avatar, Tooltip, Typography, styled, useTheme } from "@mui/material";
 import {
   BarChartOutlined,
   CalendarMonthOutlined,
@@ -127,7 +127,7 @@ const SideBar = ({ open, handleDrawerClose }) => {
           transition: "0.25s",
         }}
         alt="Travis Howard"
-        src="assets/Images/young-bearded-man-with-striped-shirt.jpg"
+        src="https://media.allure.com/photos/5a26c1d8753d0c2eea9df033/3:4/w_1262,h_1683,c_limit/mostbeautiful.jpg"
       />
       <Typography
         align="center"
@@ -152,36 +152,39 @@ const SideBar = ({ open, handleDrawerClose }) => {
       <List>
         {ArrOne.map((item) => (
           <ListItem key={item.name} disablePadding sx={{ display: "block" }}>
-            <ListItemButton
-              onClick={() => {
-                navigate(item.path);
-              }}
-              sx={{
-                minHeight: 48,
-                justifyContent: open ? "initial" : "center",
-                px: 2.5,
-                bgcolor:
-                  location.pathname === item.path
-                    ? theme.palette.mode === "dark"
-                      ? grey[700]
-                      : grey[300]
-                    : null,
-              }}
-            >
-              <ListItemIcon
+            <Tooltip title={open ? null : item.name} placement="right">
+              <ListItemButton
+                onClick={() => {
+                  navigate(item.path);
+                }}
                 sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : "auto",
-                  justifyContent: "center",
+                  minHeight: 48,
+                  justifyContent: open ? "initial" : "center",
+                  px: 2.5,
+                  bgcolor:
+                    location.pathname === item.path
+                      ? theme.palette.mode === "dark"
+                        ? grey[700]
+                        : grey[300]
+                      : null,
                 }}
               >
-                {item.icon}
-              </ListItemIcon>
-              <ListItemText
-                primary={item.name}
-                sx={{ opacity: open ? 1 : 0 }}
-              />
-            </ListItemButton>
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : "auto",
+                    justifyContent: "center",
+                  }}
+                >
+                  {item.icon}
+                </ListItemIcon>
+
+                <ListItemText
+                  primary={item.name}
+                  sx={{ opacity: open ? 1 : 0 }}
+                />
+              </ListItemButton>
+            </Tooltip>
           </ListItem>
         ))}
       </List>
@@ -191,36 +194,38 @@ const SideBar = ({ open, handleDrawerClose }) => {
       <List>
         {ArrTwo.map((item) => (
           <ListItem key={item.name} disablePadding sx={{ display: "block" }}>
-            <ListItemButton
-              onClick={() => {
-                navigate(item.path);
-              }}
-              sx={{
-                minHeight: 48,
-                justifyContent: open ? "initial" : "center",
-                px: 2.5,
-                bgcolor:
-                  location.pathname === item.path
-                    ? theme.palette.mode === "dark"
-                      ? grey[700]
-                      : grey[300]
-                    : null,
-              }}
-            >
-              <ListItemIcon
+            <Tooltip title={open ? null : item.name} placement="right">
+              <ListItemButton
+                onClick={() => {
+                  navigate(item.path);
+                }}
                 sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : "auto",
-                  justifyContent: "center",
+                  minHeight: 48,
+                  justifyContent: open ? "initial" : "center",
+                  px: 2.5,
+                  bgcolor:
+                    location.pathname === item.path
+                      ? theme.palette.mode === "dark"
+                        ? grey[700]
+                        : grey[300]
+                      : null,
                 }}
               >
-                {item.icon}
-              </ListItemIcon>
-              <ListItemText
-                primary={item.name}
-                sx={{ opacity: open ? 1 : 0 }}
-              />
-            </ListItemButton>
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : "auto",
+                    justifyContent: "center",
+                  }}
+                >
+                  {item.icon}
+                </ListItemIcon>
+                <ListItemText
+                  primary={item.name}
+                  sx={{ opacity: open ? 1 : 0 }}
+                />
+              </ListItemButton>
+            </Tooltip>
           </ListItem>
         ))}
       </List>
@@ -230,36 +235,38 @@ const SideBar = ({ open, handleDrawerClose }) => {
       <List>
         {ArrThree.map((item) => (
           <ListItem key={item.name} disablePadding sx={{ display: "block" }}>
-            <ListItemButton
-              onClick={() => {
-                navigate(item.path);
-              }}
-              sx={{
-                minHeight: 48,
-                justifyContent: open ? "initial" : "center",
-                px: 2.5,
-                bgcolor:
-                  location.pathname === item.path
-                    ? theme.palette.mode === "dark"
-                      ? grey[700]
-                      : grey[300]
-                    : null,
-              }}
-            >
-              <ListItemIcon
+            <Tooltip title={open ? null : item.name} placement="right">
+              <ListItemButton
+                onClick={() => {
+                  navigate(item.path);
+                }}
                 sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : "auto",
-                  justifyContent: "center",
+                  minHeight: 48,
+                  justifyContent: open ? "initial" : "center",
+                  px: 2.5,
+                  bgcolor:
+                    location.pathname === item.path
+                      ? theme.palette.mode === "dark"
+                        ? grey[700]
+                        : grey[300]
+                      : null,
                 }}
               >
-                {item.icon}
-              </ListItemIcon>
-              <ListItemText
-                primary={item.name}
-                sx={{ opacity: open ? 1 : 0 }}
-              />
-            </ListItemButton>
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : "auto",
+                    justifyContent: "center",
+                  }}
+                >
+                  {item.icon}
+                </ListItemIcon>
+                <ListItemText
+                  primary={item.name}
+                  sx={{ opacity: open ? 1 : 0 }}
+                />
+              </ListItemButton>
+            </Tooltip>
           </ListItem>
         ))}
       </List>

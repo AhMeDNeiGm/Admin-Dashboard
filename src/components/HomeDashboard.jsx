@@ -3,7 +3,6 @@ import * as React from "react";
 import { ThemeProvider, createTheme, styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
-import Typography from "@mui/material/Typography";
 
 import NavBar from "./shared/NavBar";
 import SideBar from "./shared/SideBar";

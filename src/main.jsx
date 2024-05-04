@@ -7,6 +7,7 @@ import {
   createRoutesFromElements,
   Route,
   RouterProvider,
+  Routes,
 } from "react-router-dom";
 
 import App from "./App";
@@ -21,6 +22,7 @@ import BarChart from "./pages/barChart/BarChart";
 import PieChart from "./pages/pieChart/PieChart";
 import LineChart from "./pages/lineChart/LineChart";
 import GeographyChart from "./pages/geographyChart/GeographyChart";
+import ErrorPage from "./pages/Error/ErrorPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -38,6 +40,8 @@ const router = createBrowserRouter(
       <Route path="pie" element={<PieChart />} />
       <Route path="line" element={<LineChart />} />
       <Route path="geography" element={<GeographyChart />} />
+
+      <Route path="*" element={<ErrorPage />} />
     </Route>
   )
 );

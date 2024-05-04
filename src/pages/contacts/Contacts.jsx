@@ -2,6 +2,7 @@ import React from "react";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { Box } from "@mui/material";
 import { dataRows } from "./../../data/DataTeam";
+import Header from "../../components/shared/Header";
 
 const Contacts = () => {
   const columnsContacts = [
@@ -48,6 +49,10 @@ const Contacts = () => {
   ];
   return (
     <>
+      <Header
+        title="CONTACTS"
+        subTitle="List of Contacts for Future Reference"
+      />
       <Box sx={{ height: 600, width: "98%", mx: "auto" }}>
         <DataGrid
           slots={{ toolbar: GridToolbar }}
