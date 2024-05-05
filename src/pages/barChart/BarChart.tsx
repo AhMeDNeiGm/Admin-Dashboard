@@ -1,5 +1,5 @@
 import React from "react";
-import Bar from "./../../components/shared/charts/Bar";
+import Bar from "../../components/shared/charts/Bar";
 import Header from "../../components/shared/Header";
 
 const BarChart = () => {

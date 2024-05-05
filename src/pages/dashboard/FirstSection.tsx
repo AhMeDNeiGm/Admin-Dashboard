@@ -1,12 +1,12 @@
 import React from "react";
 
 import { Stack, useTheme } from "@mui/material";
-import Card from "./../../components/shared/home/Card";
+import Card from "../../components/shared/home/Card";
 import EmailIcon from "@mui/icons-material/Email";
 import PointOfSaleIcon from "@mui/icons-material/PointOfSale";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import TrafficIcon from "@mui/icons-material/Traffic";
-import { dataOne, dataTwo, dataThree, dataFour } from "./../../data/DataHome";
+import { dataOne, dataTwo, dataThree, dataFour } from "../../data/DataHome";
 
 const FirstSection = () => {
   const theme = useTheme();

@@ -1,4 +1,6 @@
-export const dataRows = [
+import { RowData } from "../interfaces/data/data";
+
+export const dataRows: RowData[] = [
   {
     id: 1,
     name: "Jon Snow",

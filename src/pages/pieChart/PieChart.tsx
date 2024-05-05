@@ -1,5 +1,5 @@
 import React from "react";
-import Pie from "./../../components/shared/charts/Pie";
+import Pie from "../../components/shared/charts/Pie";
 import Header from "../../components/shared/Header";
 
 const PieChart = () => {

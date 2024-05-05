@@ -8,9 +8,17 @@ import interactionPlugin from "@fullcalendar/interaction";
 import "./Calender.css";
 import Header from "../../components/shared/Header";
 
-function renderEventContent(eventInfo) {}
+interface Event {
+  id: string;
+  title: string;
+  start: string;
+  end: string;
+  allDay: boolean;
+}
 
-function renderSidebarEvent(event) {
+function renderEventContent(eventInfo: any) {}
+
+function renderSidebarEvent(event: Event) {
   return (
     <li key={event.id}>
       <b style={{ fontSize: "13px" }}>

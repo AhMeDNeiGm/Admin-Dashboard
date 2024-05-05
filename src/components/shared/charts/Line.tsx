@@ -3,7 +3,7 @@ import React from "react";
 import { Box, useTheme } from "@mui/material";
 import { ResponsiveLine } from "@nivo/line";
 
-import { data } from "./../../../data/Charts/DataLine";
+import { data } from "../../../data/Charts/DataLine";
 
 const Line = ({ isDahboard = false }) => {
   const theme = useTheme();

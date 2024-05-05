@@ -1,24 +1,45 @@
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import { Alert, Button, MenuItem, Snackbar, Stack } from "@mui/material";
+import {
+  Alert,
+  Avatar,
+  Button,
+  MenuItem,
+  Snackbar,
+  Stack,
+} from "@mui/material";
+
 import { useForm } from "react-hook-form";
+
+import { useDropzone } from "react-dropzone";
+
 import Header from "../../components/shared/Header";
+import { UserData } from "../../interfaces/data/data";
 
 const Form = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
-  } = useForm();
+  } = useForm<UserData>();
+
+  const [avatar, setAvatar] = useState<string | null>(null);
+
+  const onDrop = (acceptedFiles: File[]) => {
+    const file = acceptedFiles[0];
+    const reader = new FileReader();
+    reader.onload = () => {
+      setAvatar(reader.result as string);
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
   const [open, setOpen] = useState(false);
 
-  const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
+  const handleClose = () => {
     setOpen(false);
   };
 
@@ -69,12 +90,34 @@ const Form = () => {
         autoComplete="off"
       >
         <Box sx={{ display: "flex", gap: 2 }}>
-          <Stack sx={{ flex: 1 }}>Profile Photo</Stack>
+          <Stack
+            sx={{
+              flex: 1,
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <Avatar
+              alt="Avatar"
+              src={avatar}
+              sx={{ width: 210, height: 210 }}
+            />
+            <Box {...getRootProps()}>
+              <input {...getInputProps()} />
+              <Button
+                variant="contained"
+                color="primary"
+                sx={{ textTransform: "capitalize" }}
+              >
+                Choose Profile Picture
+              </Button>
+            </Box>
+          </Stack>
           <Stack direction={"column"} sx={{ gap: 2, flex: 1 }}>
             <TextField
               {...register("firstName", { required: true, minLength: 3 })}
               helperText={
-                Boolean(errors.firstName)
+                errors.firstName
                   ? "This field is required & min 3 character"
                   : null
               }
@@ -86,7 +129,7 @@ const Form = () => {
             <TextField
               {...register("lastName", { required: true, minLength: 3 })}
               helperText={
-                Boolean(errors.lastName)
+                errors.lastName
                   ? "This field is required & min 3 character"
                   : null
               }
@@ -98,9 +141,7 @@ const Form = () => {
             <TextField
               error={Boolean(errors.email)}
               helperText={
-                Boolean(errors.email)
-                  ? "Please provide a valid email address"
-                  : null
+                errors.email ? "Please provide a valid email address" : null
               }
               {...register("email", { required: true, pattern: regEmail })}
               sx={{ flex: 1 }}
@@ -110,7 +151,7 @@ const Form = () => {
             <TextField
               error={Boolean(errors.ContactNumber)}
               helperText={
-                Boolean(errors.ContactNumber)
+                errors.ContactNumber
                   ? "Please provide a valid Phone number"
                   : null
               }
@@ -126,12 +167,32 @@ const Form = () => {
         </Box>
 
         <Stack direction={"row"} sx={{ gap: 2 }}>
-          <TextField sx={{ flex: 1 }} label="City" variant="outlined" />
-          <TextField sx={{ flex: 1 }} label="Address" variant="outlined" />
+          <TextField
+            sx={{ flex: 1 }}
+            label="City"
+            variant="outlined"
+            {...register("city")}
+          />
+          <TextField
+            sx={{ flex: 1 }}
+            label="Address"
+            variant="outlined"
+            {...register("address")}
+          />
         </Stack>
         <Stack direction={"row"} sx={{ gap: 2 }}>
-          <TextField sx={{ flex: 1 }} label="Age" variant="outlined" />
-          <TextField sx={{ flex: 1 }} label="Zip Code" variant="outlined" />
+          <TextField
+            sx={{ flex: 1 }}
+            label="Age"
+            variant="outlined"
+            {...register("age")}
+          />
+          <TextField
+            sx={{ flex: 1 }}
+            label="Zip Code"
+            variant="outlined"
+            {...register("zipCode")}
+          />
           <TextField
             sx={{ flex: 1 }}
             id="outlined-select-currency"
@@ -139,6 +200,7 @@ const Form = () => {
             label="Access"
             defaultValue="User"
             helperText="Select Access Permissions"
+            {...register("access")}
           >
             {accessUsers.map((option) => (
               <MenuItem key={option.value} value={option.value}>

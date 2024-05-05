@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Paper, Stack, Typography, useTheme } from "@mui/material";
 import Pie from "../../components/shared/charts/Pie";
 import Bar from "../../components/shared/charts/Bar";
-import Geo from "./../../components/shared/charts/Geo";
+import Geo from "../../components/shared/charts/Geo";
 
 const ThirdSection = () => {
   const theme = useTheme();

@@ -1,14 +1,35 @@
 import React from "react";
-import { ResponsivePie } from "@nivo/pie";
+import { ResponsiveChoropleth } from "@nivo/geo";
 import { Box, useTheme } from "@mui/material";
-import { data } from "./../../../data/Charts/DataPie";
+import { geo } from "../../../data/Charts/WorldCountries";
+import { data } from "../../../data/Charts/DataGeo";
 
-const Pie = ({ isDashbord = false }) => {
+const Geo = ({ isDashbord = false }) => {
   const theme = useTheme();
   return (
-    <Box sx={{ height: isDashbord ? "200px" : "75vh" }}>
-      <ResponsivePie
+    <Box
+      sx={{
+        borderRadius: "5px",
+        height: isDashbord ? "350px" : "75vh",
+        border: isDashbord ? null : `1px solid ${theme.palette.text.primary}`,
+      }}
+    >
+      <ResponsiveChoropleth
+        projectionScale={isDashbord ? 70 : 150}
         data={data}
+        features={geo.features}
+        margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
+        colors="spectral"
+        domain={[0, 1000000]}
+        unknownColor="#666666"
+        label="properties.name"
+        valueFormat=".2s"
+        projectionTranslation={[0.5, 0.5]}
+        projectionRotation={[0, 0, 0]}
+        enableGraticule={false}
+        graticuleLineColor="#dddddd"
+        borderWidth={1.1}
+        borderColor="#fff"
         theme={{
           // @ts-ignore
           textColor: theme.palette.text.primary,
@@ -40,7 +61,7 @@ const Pie = ({ isDashbord = false }) => {
           grid: {
             line: {
               stroke: theme.palette.divider,
-              strokeWidth: 1,
+              strokeWidth: 0,
             },
           },
           legends: {
@@ -104,125 +125,29 @@ const Pie = ({ isDashbord = false }) => {
             tableCellValue: {},
           },
         }}
-        margin={
-          isDashbord
-            ? { top: 10, right: 0, bottom: 10, left: 0 }
-            : { top: 40, right: 80, bottom: 80, left: 80 }
-        }
-        innerRadius={isDashbord ? 0.6 : 0.5}
-        padAngle={0.7}
-        cornerRadius={3}
-        activeOuterRadiusOffset={8}
-        colors={{ scheme: "nivo" }}
-        borderWidth={1}
-        borderColor={{
-          from: "color",
-          modifiers: [["darker", 0.2]],
-        }}
-        arcLinkLabelsSkipAngle={10}
-        arcLinkLabelsTextColor={theme.palette.text.primary}
-        arcLinkLabelsThickness={2}
-        arcLinkLabelsColor={{ from: "color" }}
-        arcLabelsSkipAngle={10}
-        enableArcLabels={isDashbord ? false : true}
-        enableArcLinkLabels={isDashbord ? false : true}
-        arcLabelsTextColor={{
-          from: "color",
-          modifiers: [["darker", 2]],
-        }}
-        defs={[
-          {
-            id: "dots",
-            type: "patternDots",
-            background: "inherit",
-            color: theme.palette.text.primary,
-            size: 4,
-            padding: 1,
-            stagger: true,
-          },
-          {
-            id: "lines",
-            type: "patternLines",
-            background: "inherit",
-            color: theme.palette.text.primary,
-            rotation: -45,
-            lineWidth: 6,
-            spacing: 10,
-          },
-        ]}
-        fill={[
-          {
-            match: {
-              id: "ruby",
-            },
-            id: "dots",
-          },
-          {
-            match: {
-              id: "c",
-            },
-            id: "dots",
-          },
-          {
-            match: {
-              id: "go",
-            },
-            id: "dots",
-          },
-          {
-            match: {
-              id: "python",
-            },
-            id: "dots",
-          },
-          {
-            match: {
-              id: "scala",
-            },
-            id: "lines",
-          },
-          {
-            match: {
-              id: "lisp",
-            },
-            id: "lines",
-          },
-          {
-            match: {
-              id: "elixir",
-            },
-            id: "lines",
-          },
-          {
-            match: {
-              id: "javascript",
-            },
-            id: "lines",
-          },
-        ]}
         legends={
           isDashbord
             ? []
             : [
                 {
-                  anchor: "bottom",
-                  direction: "row",
-                  justify: false,
-                  translateX: 0,
-                  translateY: 56,
+                  anchor: "bottom-left",
+                  direction: "column",
+                  justify: true,
+                  translateX: 20,
+                  translateY: -20,
                   itemsSpacing: 0,
-                  itemWidth: 100,
+                  itemWidth: 94,
                   itemHeight: 18,
-                  itemTextColor: theme.palette.text.primary,
                   itemDirection: "left-to-right",
-                  itemOpacity: 1,
+                  itemTextColor: theme.palette.text.primary,
+                  itemOpacity: 0.85,
                   symbolSize: 18,
-                  symbolShape: "circle",
                   effects: [
                     {
                       on: "hover",
                       style: {
-                        itemTextColor: theme.palette.text.primary,
+                        itemTextColor: "#000000",
+                        itemOpacity: 1,
                       },
                     },
                   ],
@@ -234,4 +159,4 @@ const Pie = ({ isDashbord = false }) => {
   );
 };
 
-export default Pie;
+export default Geo;

@@ -1,12 +1,10 @@
 import * as React from "react";
-
 import { ThemeProvider, createTheme, styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
-
-import NavBar from "./shared/NavBar";
-import SideBar from "./shared/SideBar";
-import DesignMode from "../themes/DesignMode";
+import NavBar from "./components/shared/NavBar";
+import SideBar from "./components/shared/SideBar";
+import DesignMode from "./themes/DesignMode";
 import { Outlet } from "react-router-dom";
 
 const DrawerHeader = styled("div")(({ theme }) => ({
@@ -18,8 +16,9 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   ...theme.mixins.toolbar,
 }));
 
-const HomeDashboard = () => {
+const App = () => {
   const [open, setOpen] = React.useState(false);
+
   //#region Handlers
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -33,9 +32,10 @@ const HomeDashboard = () => {
   const [mode, setMode] = React.useState(
     // Get the Current Mode from the Local Storage
     Boolean(localStorage.getItem("CurrentMode"))
-      ? localStorage.getItem("CurrentMode")
+      ? (localStorage.getItem("CurrentMode") as "light" | "dark")
       : "light"
   );
+
   // Update the theme only if the mode changes
   const theme = React.useMemo(() => createTheme(DesignMode(mode)), [mode]);
 
@@ -60,4 +60,5 @@ const HomeDashboard = () => {
     </ThemeProvider>
   );
 };
-export default HomeDashboard;
+
+export default App;

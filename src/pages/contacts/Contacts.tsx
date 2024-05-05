@@ -1,11 +1,11 @@
 import React from "react";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { Box } from "@mui/material";
-import { dataRows } from "./../../data/DataTeam";
+import { dataRows } from "../../data/DataTeam";
 import Header from "../../components/shared/Header";
 
-const Invoices = () => {
-  const columnsInvoices = [
+const Contacts = () => {
+  const columnsContacts = [
     { field: "id", headerName: "ID", width: 33 },
     { field: "registrarId", headerName: "Registrar ID" },
     {
@@ -20,6 +20,7 @@ const Invoices = () => {
       type: "number",
       headerAlign: "left",
       align: "left",
+      width: 44,
     },
     {
       field: "phone",
@@ -48,18 +49,20 @@ const Invoices = () => {
   ];
   return (
     <>
-      <Header title="INVOICES" subTitle="List of Invoice Balances" />
+      <Header
+        title="CONTACTS"
+        subTitle="List of Contacts for Future Reference"
+      />
       <Box sx={{ height: 600, width: "98%", mx: "auto" }}>
         <DataGrid
-          checkboxSelection
           slots={{ toolbar: GridToolbar }}
           rows={dataRows}
           // @ts-ignore
-          columns={columnsInvoices}
+          columns={columnsContacts}
         />
       </Box>
     </>
   );
 };
 
-export default Invoices;
+export default Contacts;

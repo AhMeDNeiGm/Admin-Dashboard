@@ -1,4 +1,7 @@
-export const dataOne = [
+import { DataItem } from "../interfaces/data/data";
+import { Transaction } from "../interfaces/data/data";
+
+export const dataOne: DataItem[] = [
   {
     id: "javascript",
     label: "javascript",
@@ -13,7 +16,7 @@ export const dataOne = [
   },
 ];
 
-export const dataTwo = [
+export const dataTwo: DataItem[] = [
   {
     id: "javascript",
     label: "javascript",
@@ -28,7 +31,7 @@ export const dataTwo = [
   },
 ];
 
-export const dataThree = [
+export const dataThree: DataItem[] = [
   {
     id: "javascript",
     label: "javascript",
@@ -43,7 +46,7 @@ export const dataThree = [
   },
 ];
 
-export const dataFour = [
+export const dataFour: DataItem[] = [
   {
     id: "javascript",
     label: "javascript",
@@ -58,7 +61,7 @@ export const dataFour = [
   },
 ];
 
-export const Transactions = [
+export const Transactions: Transaction[] = [
   {
     txId: "01e4dsaewf",
     user: "Ahmed",

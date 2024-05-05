@@ -1,5 +1,5 @@
 import React from "react";
-import Line from "./../../components/shared/charts/Line";
+import Line from "../../components/shared/charts/Line";
 import Header from "../../components/shared/Header";
 
 const LineChart = () => {
